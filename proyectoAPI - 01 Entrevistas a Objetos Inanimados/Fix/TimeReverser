@@ -1,0 +1,54 @@
+class TimeReverser:
+    def __init__(self, current_year):
+
+#Se añadieron las variables 'timeline_clear' y 'changes_made' para evitar errores de referencia en los metodos que las utilizan.
+        self.current_year = current_year
+        self.timeline_clear = True  
+        self.changes_made = 0 
+
+    def plan_event(self, year, event):
+#verificar si 'self.timeline_clear' es True antes de continuar, Se ajusto el mensaje a usar f-strings.
+        
+        if not self.timeline_clear:
+            raise ValueError("The timeline must be clear before planning events.")
+        print(f"Planning an event in the year {year}: {event}")
+
+    def cancel_event(self, year, event):
+#Se corrigio la validacion de'year' para verificar que sea un entero
+        if not isinstance(year, int):
+            raise TypeError("The year must be an integer.")
+        print(f"Cancelling {event} in the year {year}.")
+        self.changes_made += 1
+
+    def clear_timeline(self):
+
+#Elimina validacion redundante 'if self.changes_made < 0', 
+
+        print("Clearing the timeline.")
+        self.timeline_clear = True
+        self.changes_made = 0
+
+    def reset_year(self, new_year):
+
+#validacion para evitar años negativos. Se ajusto el mensaje para usar f-strings.
+
+        if new_year < 0:
+            raise ValueError("Year cannot be negative.")
+        self.current_year = new_year
+        print(f"Year reset to {new_year}.")
+
+#Se corrigio el tipo de dato del año en 'cancel_event'. Se cambio el año negativo en 'reset_year' por un año valido.
+def manage_timeline():
+    reverser = TimeReverser(2024)
+    try:
+        reverser.plan_event(2025, "Discover time travel")
+        reverser.cancel_event(2023, "Prevent war")
+        reverser.clear_timeline()
+        reverser.reset_year(3000)
+    except (ValueError, TypeError) as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    manage_timeline()
+
+
