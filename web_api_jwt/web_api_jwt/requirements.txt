@@ -1,0 +1,10 @@
+jsonschema==4.16.0
+flask
+flask-restx
+pyjwt
+python-dotenv
+oracledb
+python-multipart
+bcrypt
+uvicorn
+fastapi

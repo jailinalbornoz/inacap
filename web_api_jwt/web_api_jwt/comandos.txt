@@ -1,0 +1,4 @@
+pip install -r requirements.txt
+En sqlnet.ora cambiar la direccion
+WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="C:/web_api_jwt/Wallet/")))
+SSL_SERVER_DN_MATCH=yes
