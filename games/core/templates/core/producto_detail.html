@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+{% block content %}
+<h2>{{ producto.nombre }}</h2>
+<p><strong>Precio:</strong> {{ producto.precio }}</p>
+<p><strong>Stock:</strong> {{ producto.stock }}</p>
+<p><strong>Ingresado:</strong> {{ producto.fecha_ingreso }}</p>
+<hr>
+<p>{{ producto.descripcion|linebreaks }}</p>
+<a class="btn btn-secondary" href="{% url 'producto_list' %}">Volver</a>
+<a class="btn btn-primary" href="{% url 'producto_edit' producto.pk %}">Editar</a>
+{% endblock %}
